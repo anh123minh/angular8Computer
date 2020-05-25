@@ -19,7 +19,7 @@ export class AuthenService {
     let promise = new Promise((resolve, reject) => {
       this._http.post(environment.BASE_API + '/api/oauth/token', body, {headers: headers})
         .subscribe((response: any) => {
-          const user: LoggedInUser = response.json();
+          const user: LoggedInUser = response;
           console.log(user);
           if (user && user.access_token) {
             localStorage.removeItem(SystemConstants.CURRENT_USER);
