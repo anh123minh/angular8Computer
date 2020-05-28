@@ -15,7 +15,7 @@ import { TreeComponent } from 'angular-tree-component';
 export class ProducerTypeComponent implements OnInit {
   @ViewChild('addEditModal', { static: false }) public addEditModal: ModalDirective;
 
-  @ViewChild(TreeComponent, { static: false })  private treeProductCategory: TreeComponent;
+  @ViewChild(TreeComponent, { static: false }) private treeProductCategory: TreeComponent;
   public pageIndex: number = 1;
   public pageSize: number = 5;
   public pageDisplay: number = 10;
@@ -33,7 +33,7 @@ export class ProducerTypeComponent implements OnInit {
 
   //Load data
   public getlistpaging() {
-    this._dataService.get('/api/producerType/getlistpaging?page=' + this.pageIndex + '&pageSize=' + this.pageSize + '&filter=' + this.filter)
+    this._dataService.get('/api/producerType/getlistpaging?pageIndex=' + this.pageIndex + '&pageSize=' + this.pageSize + '&filter=' + this.filter)
       .subscribe((response: any) => {
         this.producerTypes = response.Items;
         this.pageIndex = response.PageIndex;
@@ -43,7 +43,7 @@ export class ProducerTypeComponent implements OnInit {
   }
 
   //Reset filter
-  public reset(){
+  public reset() {
     this.filter = "";
     this.getlistpaging();
   }
@@ -82,19 +82,19 @@ export class ProducerTypeComponent implements OnInit {
     if (valid) {
       if (this.entity.ProducerTypeId == undefined) {
         this._dataService.post('/api/producerType/add', JSON.stringify(this.entity))
-        .subscribe((response: any) => {
-          this.getlistpaging();
-          this.addEditModal.hide();
-          this.notificationService.printSuccessMessage(MessageContstants.CREATED_OK_MSG);
-        }, error => this._dataService.handleError(error));
+          .subscribe((response: any) => {
+            this.getlistpaging();
+            this.addEditModal.hide();
+            this.notificationService.printSuccessMessage(MessageContstants.CREATED_OK_MSG);
+          }, error => this._dataService.handleError(error));
       }
       else {
         this._dataService.put('/api/producerType/update', JSON.stringify(this.entity))
-        .subscribe((response: any) => {
-          this.getlistpaging();
-          this.addEditModal.hide();
-          this.notificationService.printSuccessMessage(MessageContstants.UPDATED_OK_MSG);
-        }, error => this._dataService.handleError(error));
+          .subscribe((response: any) => {
+            this.getlistpaging();
+            this.addEditModal.hide();
+            this.notificationService.printSuccessMessage(MessageContstants.UPDATED_OK_MSG);
+          }, error => this._dataService.handleError(error));
       }
     }
   }
