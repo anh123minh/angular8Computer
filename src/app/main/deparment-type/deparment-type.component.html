@@ -34,21 +34,21 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>Computer Type Code</th>
-              <th>Computer Type Name</th>
-              <th>Computer Type Desrciption</th>
+              <th>Deparment Type Code</th>
+              <th>Deparment Type Name</th>
+              <th>Deparment Type Desrciption</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let computerType of computerTypes">
-              <td>{{computerType.ComputerTypeCode}}</td>
-              <td>{{computerType.ComputerTypeName}}</td>
-              <td>{{computerType.ComputerTypeDescription}}</td>
+            <tr *ngFor="let deparmentType of deparmentTypes">
+              <td>{{deparmentType.DeparmentTypeCode}}</td>
+              <td>{{deparmentType.DeparmentTypeName}}</td>
+              <td>{{deparmentType.DeparmentTypeDescription}}</td>
               <td>
-                <button class="btn btn-primary" (click)="showEditModal(computerType.ComputerTypeId)"><i
+                <button class="btn btn-primary" (click)="showEditModal(deparmentType.DeparmentTypeId)"><i
                     class="fa fa-pencil-square-o"></i></button>
-                <button class="btn btn-danger" (click)="deleteItem(computerType.ComputerTypeId)"><i
+                <button class="btn btn-danger" (click)="deleteItem(deparmentType.DeparmentTypeId)"><i
                     class="fa fa-trash"></i></button>
 
               </td>
@@ -79,34 +79,34 @@
         <form class="form-horizontal form-label-left input_mask" #addEditForm="ngForm"
           (ngSubmit)="saveChanges(addEditForm.valid)" *ngIf="entity">
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">ComputerTypeCode</label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">DeparmentTypeCode</label>
             <div class="col-md-9 col-sm-9 col-xs-12">
-              <input type="hidden" [(ngModel)]="entity.ComputerTypeId" name="ComputerTypeId" />
-              <input type="text" #ComputerTypeCode="ngModel" [(ngModel)]="entity.ComputerTypeCode" required
-                minlength="3" maxlength="10" name="ComputerTypeCode" class="form-control" />
-              <small [hidden]="!(ComputerTypeCode.invalid && (ComputerTypeCode.dirty || ComputerTypeCode.touched || addEditForm.submitted))"
+              <input type="hidden" [(ngModel)]="entity.DeparmentTypeId" name="DeparmentTypeId" />
+              <input type="text" #DeparmentTypeCode="ngModel" [(ngModel)]="entity.DeparmentTypeCode" required
+                minlength="3" maxlength="10" name="DeparmentTypeCode" class="form-control" />
+              <small [hidden]="!(DeparmentTypeCode.invalid && (DeparmentTypeCode.dirty || DeparmentTypeCode.touched || addEditForm.submitted))"
                 class="text-danger">
-                ComputerTypeCode chứa từ 3 đến 10 ký tự
+                DeparmentTypeCode chứa từ 3 đến 10 ký tự
               </small>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">ComputerTypeName</label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">DeparmentTypeName</label>
             <div class="col-md-9 col-sm-9 col-xs-12">
-              <input type="text" #ComputerTypeName="ngModel" [(ngModel)]="entity.ComputerTypeName" required
-                minlength="3" maxlength="50" name="ComputerTypeName" class="form-control" />
-              <small [hidden]="!(ComputerTypeName.invalid && (ComputerTypeName.dirty || ComputerTypeName.touched || addEditForm.submitted))" class="text-danger">
-                ComputerTypeName chứa từ 3 đến 50 ký tự
+              <input type="text" #DeparmentTypeName="ngModel" [(ngModel)]="entity.DeparmentTypeName" required
+                minlength="3" maxlength="50" name="DeparmentTypeName" class="form-control" />
+              <small [hidden]="!(DeparmentTypeName.invalid && (DeparmentTypeName.dirty || DeparmentTypeName.touched || addEditForm.submitted))" class="text-danger">
+                DeparmentTypeName chứa từ 3 đến 50 ký tự
               </small>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">ComputerTypeDescription</label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">DeparmentTypeDescription</label>
             <div class="col-md-9 col-sm-9 col-xs-12">
-              <textarea type="text" #ComputerTypeDescription="ngModel" [(ngModel)]="entity.ComputerTypeDescription"
-                name="ComputerTypeDescription" class="form-control"></textarea>
+              <textarea type="text" #DeparmentTypeDescription="ngModel" [(ngModel)]="entity.DeparmentTypeDescription"
+                name="DeparmentTypeDescription" class="form-control"></textarea>
             </div>
           </div>
 
