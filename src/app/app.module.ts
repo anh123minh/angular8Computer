@@ -9,6 +9,9 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { LoginModule } from './login/login.module';
+import { MainModule } from './main/main.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -20,7 +23,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     HttpModule,
     RouterModule.forRoot(appRoutes, { useHash: true }),
     PaginationModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    LoginModule,
+    MainModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

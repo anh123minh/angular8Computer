@@ -10,13 +10,25 @@ import { AuthenService } from '../core/services/authen.service';
 import { SignalrService } from '../core/services/signalr.service';
 import { SidebarMenuComponent } from '../shared/sidebar-menu/sidebar-menu.component';
 import { TopMenuComponent } from '../shared/top-menu/top-menu.component';
+import { ComputerTypeModule } from './computer-type/computer-type.module';
+import { DeparmentTypeModule } from './deparment-type/deparment-type.module';
+import { ProducerTypeModule } from './producer-type/producer-type.module';
+import { ComputerModule } from './computer/computer.module';
+import { UsingReportModule } from './using-report/using-report.module';
+import { ComputerHistoryModule } from './computer-history/computer-history.module';
 
 @NgModule({
   imports: [
     CommonModule,
     UserModule,
     HomeModule,
-    RouterModule.forChild(mainRoutes)
+    RouterModule.forChild(mainRoutes),
+    ComputerModule,
+    ComputerTypeModule,
+    ComputerHistoryModule,
+    DeparmentTypeModule,
+    ProducerTypeModule,
+    UsingReportModule
   ],
   declarations: [MainComponent, SidebarMenuComponent, TopMenuComponent],
   providers: [UtilityService, AuthenService, SignalrService]

@@ -25,6 +25,18 @@ export const mainRoutes: Routes = [
             { path: 'announcement', loadChildren: './announcement/announcement.module#AnnouncementModule' },
 
             { path: 'report', loadChildren: './report/report.module#ReportModule' },
+
+            { path: 'computer/computer', loadChildren: './computer/computer.module#ComputerModule' },
+
+            { path: 'computer/computer-type', loadChildren: './computer-type/computer-type.module#ComputerTypeModule' },
+
+            { path: 'computer/producer-type', loadChildren: './producer-type/producer-type.module#ProducerTypeModule' },
+
+            { path: 'computer/deparment-type', loadChildren: './deparment-type/deparment-type.module#DeparmentTypeModule' },
+
+            { path: 'computer/computer-history', loadChildren: './computer-history/computer-history.module#ComputerHistoryModule' },
+
+            { path: 'computer/using-report', loadChildren: './using-report/using-report.module#UsingReportModule' },
         ]
     }
 
