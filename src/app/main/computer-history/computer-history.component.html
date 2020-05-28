@@ -1,0 +1,151 @@
+<div class="page-title">
+  <div class="title_left">
+    <h3>Danh sách nhóm quyền</h3>
+  </div>
+
+  <div class="title_left">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">DeparmentTypes</label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <select class="form-control" name="deparmentTypeId" [(ngModel)]="deparmentTypeId">
+        <option value="" selected>--Chọn chức năng cha--</option>
+        <option *ngFor="let x of deparmentTypeSelectList" [value]="x.DeparmentTypeId">{{x.DeparmentTypeName}}
+        </option>
+      </select>
+      <!-- <input type="hidden" [(ngModel)]="deparmentTypeId" name="deparmentTypeId" class="" /> -->
+    </div>
+  </div>
+
+  <div class="title_right">
+    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+      <div class="input-group">
+        <input type="text" class="form-control" name="filter" (keyup.enter)="getlistpaging()" [(ngModel)]="filter"
+          placeholder="Gõ tên quyền...">
+        <span class="input-group-btn">
+          <button class="btn btn-default" (click)="getlistpaging()" type="button">Tìm!</button>
+          <button class="btn btn-default" (click)="reset()" type="button">Reset</button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <ul class="nav navbar-right panel_toolbox">
+          <li>
+            <button class="btn btn-success" (click)="showAddModal()">Thêm mới</button>
+          </li>
+
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Computer Code </th>
+              <th>Computer Name</th>
+              <th>Deparment Type Code</th>
+              <th>Deparment Type Name</th>
+              <th>StartTime</th>
+              <th>EndTime</th>
+              <th>TotalHour</th>
+              <th>Action</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let computerUsingHistory of computerUsingHistories">
+              <td>{{computerUsingHistory.ComputerCode}}</td>
+              <td>{{computerUsingHistory.ComputerName}}</td>
+              <td>{{computerUsingHistory.DeparmentTypeCode}}</td>
+              <td>{{computerUsingHistory.DeparmentTypeName}}</td>
+              <td>{{computerUsingHistory.StartTime | date:'medium' }}</td>
+              <td>{{computerUsingHistory.EndTime | date:'medium' }}</td>
+              <td>{{computerUsingHistory.TotalHour }}</td>
+              <td>
+                <button class="btn btn-primary" (click)="showEditModal(computerUsingHistory.ComputerUsingHistoryId)"><i
+                    class="fa fa-pencil-square-o"></i></button>
+                <button class="btn btn-danger" (click)="deleteItem(computerUsingHistory.ComputerUsingHistoryId)"><i
+                    class="fa fa-trash"></i></button>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="col-md-12">
+          <pagination [boundaryLinks]="true" [itemsPerPage]="pageSize" (pageChanged)="pageChanged($event)"
+            [totalItems]="totalRow" [(ngModel)]="pageIndex" class="pagination-sm" previousText="&lsaquo;"
+            nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #addEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Thêm mới / Chỉnh sửa</h4>
+        <button type="button" class="close pull-right" (click)="addEditModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal form-label-left input_mask" #addEditForm="ngForm"
+          (ngSubmit)="saveChanges(addEditForm.valid)" *ngIf="entity">
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Computers</label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+              <select class="form-control" name="ComputerTypeId" [(ngModel)]="entity.ComputerTypeId">
+                <option value="" selected>--Chọn chức năng cha--</option>
+                <option *ngFor="let x of computerTypeSelectList" [value]="x.ComputerTypeId">{{x.ComputerTypeName}}
+                </option>
+              </select>
+              <input type="hidden" [(ngModel)]="entity.ComputerTypeId" name="ComputerTypeId" class="form-control" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">DeparmentTypes</label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+              <select class="form-control" name="DeparmentTypeId" [(ngModel)]="entity.DeparmentTypeId">
+                <option value="" selected>--Chọn chức năng cha--</option>
+                <option *ngFor="let x of deparmentTypeSelectList" [value]="x.DeparmentTypeId">{{x.DeparmentTypeName}}
+                </option>
+              </select>
+              <input type="hidden" [(ngModel)]="entity.DeparmentTypeId" name="DeparmentTypeId" class="form-control" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">ProducerTypes</label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+              <select class="form-control" name="ProducerTypeId" [(ngModel)]="entity.ProducerTypeId">
+                <option value="" selected>--Chọn chức năng cha--</option>
+                <option *ngFor="let x of producerTypeSelectList" [value]="x.ProducerTypeId">{{x.ProducerTypeName}}
+                </option>
+              </select>
+              <input type="hidden" [(ngModel)]="entity.ProducerTypeId" name="ProducerTypeId" class="form-control" />
+            </div>
+          </div>
+
+
+          <div class="ln_solid"></div>
+          <div class="form-group">
+            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+              <button type="button" (click)="addEditModal.hide()" class="btn btn-primary">Hủy bỏ</button>
+              <button type="submit" class="btn btn-success" [disabled]="!addEditForm.form.valid">Cập nhật</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
