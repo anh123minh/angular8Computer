@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>DANH SÁCH NHÀ SẢN XUẤT</h1>
+        <h1>LIST OF PRODUCER TYPES</h1>
       </div>
     </div>
   </div>
@@ -14,10 +14,10 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <button class="btn btn-success" (click)="showAddModal()">Thêm mới</button>
+            <button class="btn btn-success" (click)="showAddModal()">CREATE</button>
             <div class="card-tools">
               <div class="input-group input-group-sm">
-                <input type="text" class="form-control float-right" name="filter" (keyup.enter)="getlistpaging()" [(ngModel)]="filter" placeholder="Gõ tên quyền...">
+                <input type="text" class="form-control float-right" name="filter" (keyup.enter)="getlistpaging()" [(ngModel)]="filter" placeholder="CODE or NAME...">
                 <div class="input-group-append">
                   <button class="btn btn-default" (click)="getlistpaging()" type="button"><i class="fas fa-search"></i></button>
                   <button class="btn btn-default" (click)="reset()" type="button">Reset</button>
@@ -66,7 +66,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title pull-left">Thêm mới / Chỉnh sửa</h4>
+        <h4 class="modal-title pull-left">CREATE / UPDATE</h4>
         <button type="button" class="close pull-right" (click)="addEditModal.hide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -75,32 +75,32 @@
         <form class="form-horizontal form-label-left input_mask" #addEditForm="ngForm"
           (ngSubmit)="saveChanges(addEditForm.valid)" *ngIf="entity">
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">ProducerTypeCode</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <label class="control-label">ProducerTypeCode</label>
+            <div>
               <input type="hidden" [(ngModel)]="entity.ProducerTypeId" name="ProducerTypeId" />
               <input type="text" #ProducerTypeCode="ngModel" [(ngModel)]="entity.ProducerTypeCode" required
-                minlength="3" maxlength="10" name="ProducerTypeCode" class="form-control" />
+                minlength="3" maxlength="10" name="ProducerTypeCode" class="form-control"  placeholder="ProducerTypeCode from 3 to 10 letters"/>
               <small [hidden]="!(ProducerTypeCode.invalid && (ProducerTypeCode.dirty || ProducerTypeCode.touched || addEditForm.submitted))"
                 class="text-danger">
-                ProducerTypeCode chứa từ 3 đến 10 ký tự
+                ProducerTypeCode from 3 to 10 letters
               </small>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">ProducerTypeName</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <label class="control-label">ProducerTypeName</label>
+            <div>
               <input type="text" #ProducerTypeName="ngModel" [(ngModel)]="entity.ProducerTypeName" required
-                minlength="3" maxlength="50" name="ProducerTypeName" class="form-control" />
+                minlength="3" maxlength="50" name="ProducerTypeName" class="form-control" placeholder="ProducerTypeName from 3 to 50 letters"/>
               <small [hidden]="!(ProducerTypeName.invalid && (ProducerTypeName.dirty || ProducerTypeName.touched || addEditForm.submitted))" class="text-danger">
-                ProducerTypeName chứa từ 3 đến 50 ký tự
+                ProducerTypeName from 3 to 50 letters
               </small>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">ProducerTypeDescription</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <label class="control-label">ProducerTypeDescription</label>
+            <div>
               <textarea type="text" #ProducerTypeDescription="ngModel" [(ngModel)]="entity.ProducerTypeDescription"
                 name="ProducerTypeDescription" class="form-control"></textarea>
             </div>
@@ -109,8 +109,8 @@
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-              <button type="button" (click)="addEditModal.hide()" class="btn btn-primary">Hủy bỏ</button>
-              <button type="submit" class="btn btn-success" [disabled]="!addEditForm.form.valid">Cập nhật</button>
+              <button type="button" (click)="addEditModal.hide()" class="btn btn-primary">CANCEL</button>
+              <button type="submit" class="btn btn-success" [disabled]="!addEditForm.form.valid">UPDATE</button>
             </div>
           </div>
         </form>

@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>DANH SÁCH PHÒNG BAN</h1>
+        <h1>LIST OF DEPARMENT TYPES</h1>
       </div>
     </div>
   </div>
@@ -14,11 +14,11 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <button class="btn btn-success" (click)="showAddModal()">Thêm mới</button>
+            <button class="btn btn-success" (click)="showAddModal()">CREATE</button>
             <div class="card-tools">
               <div class="input-group input-group-sm">
                 <input type="text" class="form-control float-right" name="filter" (keyup.enter)="getlistpaging()"
-                  [(ngModel)]="filter" placeholder="Gõ tên quyền...">
+                  [(ngModel)]="filter" placeholder="CODE or NAME...">
                 <div class="input-group-append">
                   <button class="btn btn-default" (click)="getlistpaging()" type="button"><i
                       class="fas fa-search"></i></button>
@@ -68,7 +68,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title pull-left">Thêm mới / Chỉnh sửa</h4>
+        <h4 class="modal-title pull-left">CREATE / UPDATE</h4>
         <button type="button" class="close pull-right" (click)="addEditModal.hide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -77,32 +77,32 @@
         <form class="form-horizontal form-label-left input_mask" #addEditForm="ngForm"
           (ngSubmit)="saveChanges(addEditForm.valid)" *ngIf="entity">
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">DeparmentTypeCode</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <label class="control-label">DeparmentTypeCode</label>
+            <div>
               <input type="hidden" [(ngModel)]="entity.DeparmentTypeId" name="DeparmentTypeId" />
               <input type="text" #DeparmentTypeCode="ngModel" [(ngModel)]="entity.DeparmentTypeCode" required
-                minlength="3" maxlength="10" name="DeparmentTypeCode" class="form-control" />
+                minlength="3" maxlength="10" name="DeparmentTypeCode" class="form-control" placeholder="DeparmentTypeCode from 3 to 10 letters"/>
               <small [hidden]="!(DeparmentTypeCode.invalid && (DeparmentTypeCode.dirty || DeparmentTypeCode.touched || addEditForm.submitted))"
                 class="text-danger">
-                DeparmentTypeCode chứa từ 3 đến 10 ký tự
+                DeparmentTypeCode from 3 to 10 letters
               </small>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">DeparmentTypeName</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <label class="control-label">DeparmentTypeName</label>
+            <div>
               <input type="text" #DeparmentTypeName="ngModel" [(ngModel)]="entity.DeparmentTypeName" required
-                minlength="3" maxlength="50" name="DeparmentTypeName" class="form-control" />
+                minlength="3" maxlength="50" name="DeparmentTypeName" class="form-control" placeholder="DeparmentTypeName from 3 to 50 letters"/>
               <small [hidden]="!(DeparmentTypeName.invalid && (DeparmentTypeName.dirty || DeparmentTypeName.touched || addEditForm.submitted))" class="text-danger">
-                DeparmentTypeName chứa từ 3 đến 50 ký tự
+                DeparmentTypeName from 3 to 50 letters
               </small>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">DeparmentTypeDescription</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <label class="control-label">DeparmentTypeDescription</label>
+            <div>
               <textarea type="text" #DeparmentTypeDescription="ngModel" [(ngModel)]="entity.DeparmentTypeDescription"
                 name="DeparmentTypeDescription" class="form-control"></textarea>
             </div>
@@ -111,8 +111,8 @@
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-              <button type="button" (click)="addEditModal.hide()" class="btn btn-primary">Hủy bỏ</button>
-              <button type="submit" class="btn btn-success" [disabled]="!addEditForm.form.valid">Cập nhật</button>
+              <button type="button" (click)="addEditModal.hide()" class="btn btn-primary">CANCEL</button>
+              <button type="submit" class="btn btn-success" [disabled]="!addEditForm.form.valid">UPDATE</button>
             </div>
           </div>
         </form>

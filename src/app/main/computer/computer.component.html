@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>DANH SÁCH MÁY TÍNH</h1>
+        <h1>LIST OF COMPUTERS</h1>
       </div>
     </div>
   </div>
@@ -14,23 +14,23 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <button class="btn btn-success" (click)="showAddModal()">Thêm mới</button>
+            <button class="btn btn-success" (click)="showAddModal()">CREATE</button>
             <div class="card-tools">
               <div class="input-group input-group-sm">
                 <input type="text" class="form-control float-right" name="filter" (keyup.enter)="getlistpaging()" [(ngModel)]="filter" placeholder="CODE or NAME">
                 <div class="input-group-append">
                   <select name="computerTypeId" [(ngModel)]="computerTypeId">
-                    <option value="" selected>Chọn Loại Máy tính</option>
+                    <option value="" selected>--Select Computer Type--</option>
                     <option *ngFor="let x of computerTypeSelectList" [value]="x.ComputerTypeId">{{x.ComputerTypeName}}
                     </option>
                   </select>
                   <select name="deparmentTypeId" [(ngModel)]="deparmentTypeId">
-                    <option value="" selected>Chọn Loại Phòng Ban</option>
+                    <option value="" selected>--Select Deparment Type--</option>
                     <option *ngFor="let x of deparmentTypeSelectList" [value]="x.DeparmentTypeId">{{x.DeparmentTypeName}}
                     </option>
                   </select>
                   <select name="producerTypeId" [(ngModel)]="producerTypeId">
-                    <option value="" selected>Chọn Nhà Sản Xuất</option>
+                    <option value="" selected>--Select Producer Type--</option>
                     <option *ngFor="let x of producerTypeSelectList" [value]="x.ProducerTypeId">{{x.ProducerTypeName}}
                     </option>
                   </select>
@@ -89,7 +89,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title pull-left">Thêm mới / Chỉnh sửa</h4>
+        <h4 class="modal-title pull-left">CREATE / UPDATE</h4>
         <button type="button" class="close pull-right" (click)="addEditModal.hide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -98,45 +98,44 @@
         <form class="form-horizontal form-label-left input_mask" #addEditForm="ngForm"
           (ngSubmit)="saveChanges(addEditForm.valid)" *ngIf="entity">
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">ComputerCode</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <label class="control-label">ComputerCode</label>
+            <div>
               <input type="hidden" [(ngModel)]="entity.ComputerId" name="ComputerId" />
               <input type="text" #ComputerCode="ngModel" [(ngModel)]="entity.ComputerCode" required minlength="3"
                 maxlength="10" name="ComputerCode" class="form-control" />
               <small
                 [hidden]="!(ComputerCode.invalid && (ComputerCode.dirty || ComputerCode.touched || addEditForm.submitted))"
                 class="text-danger">
-                ComputerCode chứa từ 3 đến 10 ký tự
+                ComputerCode from 3 to 10 letters
               </small>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">ComputerName</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <label class="control-label">ComputerName</label>
+            <div>
               <input type="text" #ComputerName="ngModel" [(ngModel)]="entity.ComputerName" required minlength="3"
                 maxlength="50" name="ComputerName" class="form-control" />
               <small
                 [hidden]="!(ComputerName.invalid && (ComputerName.dirty || ComputerName.touched || addEditForm.submitted))"
                 class="text-danger">
-                ComputerName chứa từ 3 đến 50 ký tự
+                ComputerName from 3 to 50 letters
               </small>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">ComputerDescription</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <label class="control-label">ComputerDescription</label>
+            <div>
               <textarea type="text" #ComputerDescription="ngModel" [(ngModel)]="entity.ComputerDescription"
                 name="ComputerDescription" class="form-control"></textarea>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">ComputerTypes</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <label class="control-label">ComputerTypes</label>
+            <div>
               <select class="form-control" name="ComputerTypeId" [(ngModel)]="entity.ComputerTypeId">
-                <option value="" selected>--Chọn chức năng cha--</option>
                 <option *ngFor="let x of computerTypeSelectList" [value]="x.ComputerTypeId">{{x.ComputerTypeName}}
                 </option>
               </select>
@@ -145,10 +144,9 @@
           </div>
 
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">DeparmentTypes</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <label class="control-label">DeparmentTypes</label>
+            <div>
               <select class="form-control" name="DeparmentTypeId" [(ngModel)]="entity.DeparmentTypeId">
-                <option value="" selected>--Chọn chức năng cha--</option>
                 <option *ngFor="let x of deparmentTypeSelectList" [value]="x.DeparmentTypeId">{{x.DeparmentTypeName}}
                 </option>
               </select>
@@ -157,10 +155,9 @@
           </div>
 
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">ProducerTypes</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <label class="control-label">ProducerTypes</label>
+            <div>
               <select class="form-control" name="ProducerTypeId" [(ngModel)]="entity.ProducerTypeId">
-                <option value="" selected>--Chọn chức năng cha--</option>
                 <option *ngFor="let x of producerTypeSelectList" [value]="x.ProducerTypeId">{{x.ProducerTypeName}}
                 </option>
               </select>
@@ -172,8 +169,8 @@
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-              <button type="button" (click)="addEditModal.hide()" class="btn btn-primary">Hủy bỏ</button>
-              <button type="submit" class="btn btn-success" [disabled]="!addEditForm.form.valid">Cập nhật</button>
+              <button type="button" (click)="addEditModal.hide()" class="btn btn-primary">CANCEL</button>
+              <button type="submit" class="btn btn-success" [disabled]="!addEditForm.form.valid">UPDATE</button>
             </div>
           </div>
         </form>

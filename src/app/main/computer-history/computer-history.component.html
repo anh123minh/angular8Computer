@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>DANH SÁCH LỊCH SỬ SỬ DỤNG MÁY TÍNH</h1>
+        <h1>LIST OF COMPUTERS USING HISTORY</h1>
       </div>
     </div>
   </div>
@@ -14,14 +14,14 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <button class="btn btn-success" (click)="showAddModal()">Thêm mới</button>
+            <button class="btn btn-success" (click)="showAddModal()">CREATE</button>
             <div class="card-tools">
               <div class="input-group input-group-sm">
                 <input type="text" class="form-control float-right" name="filter" (keyup.enter)="getlistpaging()"
-                  [(ngModel)]="filter" placeholder="Gõ tên quyền...">
+                  [(ngModel)]="filter" placeholder="CODE or NAME...">
                 <div class="input-group-append">
                   <select name="deparmentTypeId" [(ngModel)]="deparmentTypeId">
-                    <option value="" selected>--Chọn chức năng cha--</option>
+                    <option value="" selected>--Select Deparment Type--</option>
                     <option *ngFor="let x of deparmentTypeSelectList" [value]="x.DeparmentTypeId">{{x.DeparmentTypeName}}
                     </option>
                   </select>
@@ -82,7 +82,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title pull-left">Thêm mới / Chỉnh sửa</h4>
+        <h4 class="modal-title pull-left">CREATE / UPDATE</h4>
         <button type="button" class="close pull-right" (click)="addEditModal.hide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -92,10 +92,9 @@
           (ngSubmit)="saveChanges(addEditForm.valid)" *ngIf="entity">
 
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">Computers</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <label class="control-label">Computers</label>
+            <div>
               <select class="form-control" name="ComputerTypeId" [(ngModel)]="entity.ComputerTypeId">
-                <option value="" selected>--Chọn chức năng cha--</option>
                 <option *ngFor="let x of computerTypeSelectList" [value]="x.ComputerTypeId">{{x.ComputerTypeName}}
                 </option>
               </select>
@@ -104,10 +103,9 @@
           </div>
 
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">DeparmentTypes</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <label class="control-label">DeparmentTypes</label>
+            <div>
               <select class="form-control" name="DeparmentTypeId" [(ngModel)]="entity.DeparmentTypeId">
-                <option value="" selected>--Chọn chức năng cha--</option>
                 <option *ngFor="let x of deparmentTypeSelectList" [value]="x.DeparmentTypeId">{{x.DeparmentTypeName}}
                 </option>
               </select>
@@ -116,10 +114,9 @@
           </div>
 
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">ProducerTypes</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <label class="control-label">ProducerTypes</label>
+            <div>
               <select class="form-control" name="ProducerTypeId" [(ngModel)]="entity.ProducerTypeId">
-                <option value="" selected>--Chọn chức năng cha--</option>
                 <option *ngFor="let x of producerTypeSelectList" [value]="x.ProducerTypeId">{{x.ProducerTypeName}}
                 </option>
               </select>
@@ -131,8 +128,8 @@
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-              <button type="button" (click)="addEditModal.hide()" class="btn btn-primary">Hủy bỏ</button>
-              <button type="submit" class="btn btn-success" [disabled]="!addEditForm.form.valid">Cập nhật</button>
+              <button type="button" (click)="addEditModal.hide()" class="btn btn-primary">CANCEL</button>
+              <button type="submit" class="btn btn-success" [disabled]="!addEditForm.form.valid">UPDATE</button>
             </div>
           </div>
         </form>

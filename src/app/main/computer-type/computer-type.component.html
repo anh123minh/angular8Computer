@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>DANH SÁCH LOẠI MÁY TÍNH</h1>
+        <h1>LIST OF COMPUTER TYPES</h1>
       </div>
     </div>
   </div>
@@ -14,11 +14,11 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <button class="btn btn-success" (click)="showAddModal()">Thêm mới</button>
+            <button class="btn btn-success" (click)="showAddModal()">CREATE</button>
             <div class="card-tools">
               <div class="input-group input-group-sm">
                 <input type="text" class="form-control float-right" name="filter" (keyup.enter)="getlistpaging()"
-                  [(ngModel)]="filter" placeholder="Gõ tên quyền...">
+                  [(ngModel)]="filter" placeholder="CODE or NAME...">
                 <div class="input-group-append">
                   <button class="btn btn-default" (click)="getlistpaging()" type="button"><i
                       class="fas fa-search"></i></button>
@@ -68,7 +68,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title pull-left">Thêm mới / Chỉnh sửa</h4>
+        <h4 class="modal-title pull-left">CREATE / UPDATE</h4>
         <button type="button" class="close pull-right" (click)="addEditModal.hide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -77,32 +77,32 @@
         <form class="form-horizontal form-label-left input_mask" #addEditForm="ngForm"
           (ngSubmit)="saveChanges(addEditForm.valid)" *ngIf="entity">
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">ComputerTypeCode</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <label class="control-label">ComputerTypeCode</label>
+            <div>
               <input type="hidden" [(ngModel)]="entity.ComputerTypeId" name="ComputerTypeId" />
               <input type="text" #ComputerTypeCode="ngModel" [(ngModel)]="entity.ComputerTypeCode" required
-                minlength="3" maxlength="10" name="ComputerTypeCode" class="form-control" />
+                minlength="3" maxlength="10" name="ComputerTypeCode" class="form-control" placeholder="ComputerTypeCode from 3 to 10 letters"/>
               <small [hidden]="!(ComputerTypeCode.invalid && (ComputerTypeCode.dirty || ComputerTypeCode.touched || addEditForm.submitted))"
                 class="text-danger">
-                ComputerTypeCode chứa từ 3 đến 10 ký tự
+                ComputerTypeCode from 3 to 10 letters
               </small>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">ComputerTypeName</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <label class="control-label">ComputerTypeName</label>
+            <div>
               <input type="text" #ComputerTypeName="ngModel" [(ngModel)]="entity.ComputerTypeName" required
-                minlength="3" maxlength="50" name="ComputerTypeName" class="form-control" />
+                minlength="3" maxlength="50" name="ComputerTypeName" class="form-control" placeholder="ComputerTypeName from 3 to 50 letters"/>
               <small [hidden]="!(ComputerTypeName.invalid && (ComputerTypeName.dirty || ComputerTypeName.touched || addEditForm.submitted))" class="text-danger">
-                ComputerTypeName chứa từ 3 đến 50 ký tự
+                ComputerTypeName from 3 to 50 letters
               </small>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">ComputerTypeDescription</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <label class="control-label">ComputerTypeDescription</label>
+            <div>
               <textarea type="text" #ComputerTypeDescription="ngModel" [(ngModel)]="entity.ComputerTypeDescription"
                 name="ComputerTypeDescription" class="form-control"></textarea>
             </div>
@@ -111,8 +111,8 @@
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-              <button type="button" (click)="addEditModal.hide()" class="btn btn-primary">Hủy bỏ</button>
-              <button type="submit" class="btn btn-success" [disabled]="!addEditForm.form.valid">Cập nhật</button>
+              <button type="button" (click)="addEditModal.hide()" class="btn btn-primary">CANCEL</button>
+              <button type="submit" class="btn btn-success" [disabled]="!addEditForm.form.valid">UPDATE</button>
             </div>
           </div>
         </form>
