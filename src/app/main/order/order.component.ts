@@ -10,6 +10,7 @@ import { UploadService } from '../../core/services/upload.service';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { IMultiSelectOption } from 'angular-2-dropdown-multiselect';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-order',

@@ -8,6 +8,7 @@ import { SignalrService } from '../../core/services/signalr.service';
 import { DataService } from '../../core/services/data.service';
 import { UtilityService } from '../../core/services/utility.service';
 import { environment } from 'src/environments/environment';
+import * as moment from 'moment';
 @Component({
   selector: 'app-top-menu',
   templateUrl: './top-menu.component.html',

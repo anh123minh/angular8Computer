@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../../../core/services/data.service';
 import { BaseChartDirective } from 'ng2-charts';
+import * as moment from 'moment';
 @Component({
   selector: 'app-revenue',
   templateUrl: './revenue.component.html',

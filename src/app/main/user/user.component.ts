@@ -12,6 +12,7 @@ import { SystemConstants } from '../../core/common/system.constants';
 
 import { IMultiSelectOption } from 'angular-2-dropdown-multiselect';
 import { environment } from 'src/environments/environment';
+import * as moment from 'moment';
 
 
 @Component({
