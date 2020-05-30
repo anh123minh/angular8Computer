@@ -38,7 +38,7 @@ export class ComputerHistoryComponent implements OnInit {
   //Load data
   public getlistpaging() {
     this._dataService.get(`/api/computerUsingHistory/getlistpaging?pageIndex=${this.pageIndex}
-    &pageSize=${this.pageSize}&deparmentTypeId=${this.deparmentTypeId}&filter=${this.filter}`)
+    &pageSize=${this.pageSize}&deparmentTypeId=${this.deparmentTypeId}&filter=${this.filter.trim()}`)
       .subscribe((response: any) => {
         this.computerUsingHistories = response.Items;
         this.pageIndex = response.PageIndex;

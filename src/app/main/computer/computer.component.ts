@@ -43,7 +43,7 @@ export class ComputerComponent implements OnInit {
   //Load data
   public getlistpaging() {
     this._dataService.get(`/api/computer/getlistpaging?pageIndex=${this.pageIndex}&pageSize=${this.pageSize}
-    &computerTypeId=${this.computerTypeId}&deparmentTypeId=${this.deparmentTypeId}&producerTypeId=${this.producerTypeId}&filter=${this.filter}`)
+    &computerTypeId=${this.computerTypeId}&deparmentTypeId=${this.deparmentTypeId}&producerTypeId=${this.producerTypeId}&filter=${this.filter.trim()}`)
       .subscribe((response: any) => {
         this.computers = response.Items;
         this.pageIndex = response.PageIndex;

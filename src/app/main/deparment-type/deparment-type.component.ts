@@ -33,7 +33,7 @@ export class DeparmentTypeComponent implements OnInit {
 
   //Load data
   public getlistpaging() {
-    this._dataService.get('/api/deparmentType/getlistpaging?pageIndex=' + this.pageIndex + '&pageSize=' + this.pageSize + '&filter=' + this.filter)
+    this._dataService.get('/api/deparmentType/getlistpaging?pageIndex=' + this.pageIndex + '&pageSize=' + this.pageSize + '&filter=' + this.filter.trim())
       .subscribe((response: any) => {
         this.deparmentTypes = response.Items;
         this.pageIndex = response.PageIndex;

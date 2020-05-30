@@ -33,7 +33,7 @@ export class ProducerTypeComponent implements OnInit {
 
   //Load data
   public getlistpaging() {
-    this._dataService.get('/api/producerType/getlistpaging?pageIndex=' + this.pageIndex + '&pageSize=' + this.pageSize + '&filter=' + this.filter)
+    this._dataService.get('/api/producerType/getlistpaging?pageIndex=' + this.pageIndex + '&pageSize=' + this.pageSize + '&filter=' + this.filter.trim())
       .subscribe((response: any) => {
         this.producerTypes = response.Items;
         this.pageIndex = response.PageIndex;
