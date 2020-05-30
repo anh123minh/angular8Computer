@@ -1,90 +1,81 @@
-<div class="page-title">
-  <div class="title_left">
-    <h3>Danh sách nhóm quyền</h3>
-  </div>
-
-  <div class="title_left">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12">DeparmentTypes</label>
-    <div class="col-md-9 col-sm-9 col-xs-12">
-      <select class="form-control" name="deparmentTypeId" [(ngModel)]="deparmentTypeId">
-        <option value="" selected>--Chọn chức năng cha--</option>
-        <option *ngFor="let x of deparmentTypeSelectList" [value]="x.DeparmentTypeId">{{x.DeparmentTypeName}}
-        </option>
-      </select>
-      <!-- <input type="hidden" [(ngModel)]="deparmentTypeId" name="deparmentTypeId" class="" /> -->
-    </div>
-  </div>
-
-  <div class="title_right">
-    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-      <div class="input-group">
-        <input type="text" class="form-control" name="filter" (keyup.enter)="getlistpaging()" [(ngModel)]="filter"
-          placeholder="Gõ tên quyền...">
-        <span class="input-group-btn">
-          <button class="btn btn-default" (click)="getlistpaging()" type="button">Tìm!</button>
-          <button class="btn btn-default" (click)="reset()" type="button">Reset</button>
-        </span>
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>DANH SÁCH LỊCH SỬ SỬ DỤNG MÁY TÍNH</h1>
       </div>
     </div>
   </div>
-</div>
-<div class="clearfix"></div>
-<div class="row">
-  <div class="col-md-12 col-sm-12 col-xs-12">
-    <div class="x_panel">
-      <div class="x_title">
-        <ul class="nav navbar-right panel_toolbox">
-          <li>
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
             <button class="btn btn-success" (click)="showAddModal()">Thêm mới</button>
-          </li>
-
-        </ul>
-        <div class="clearfix"></div>
-      </div>
-      <div class="x_content">
-
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Computer Code </th>
-              <th>Computer Name</th>
-              <th>Deparment Type Code</th>
-              <th>Deparment Type Name</th>
-              <th>StartTime</th>
-              <th>EndTime</th>
-              <th>TotalHour</th>
-              <th>Action</th>
-
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let computerUsingHistory of computerUsingHistories">
-              <td>{{computerUsingHistory.ComputerCode}}</td>
-              <td>{{computerUsingHistory.ComputerName}}</td>
-              <td>{{computerUsingHistory.DeparmentTypeCode}}</td>
-              <td>{{computerUsingHistory.DeparmentTypeName}}</td>
-              <td>{{computerUsingHistory.StartTime | date:'medium' }}</td>
-              <td>{{computerUsingHistory.EndTime | date:'medium' }}</td>
-              <td>{{computerUsingHistory.TotalHour }}</td>
-              <td>
-                <button class="btn btn-primary" (click)="showEditModal(computerUsingHistory.ComputerUsingHistoryId)"><i
-                    class="fa fa-pencil-square-o"></i></button>
-                <button class="btn btn-danger" (click)="deleteItem(computerUsingHistory.ComputerUsingHistoryId)"><i
-                    class="fa fa-trash"></i></button>
-
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="col-md-12">
-          <pagination [boundaryLinks]="true" [itemsPerPage]="pageSize" (pageChanged)="pageChanged($event)"
-            [totalItems]="totalRow" [(ngModel)]="pageIndex" class="pagination-sm" previousText="&lsaquo;"
-            nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+            <div class="card-tools">
+              <div class="input-group input-group-sm">
+                <input type="text" class="form-control float-right" name="filter" (keyup.enter)="getlistpaging()"
+                  [(ngModel)]="filter" placeholder="Gõ tên quyền...">
+                <div class="input-group-append">
+                  <select name="deparmentTypeId" [(ngModel)]="deparmentTypeId">
+                    <option value="" selected>--Chọn chức năng cha--</option>
+                    <option *ngFor="let x of deparmentTypeSelectList" [value]="x.DeparmentTypeId">{{x.DeparmentTypeName}}
+                    </option>
+                  </select>
+                  <button class="btn btn-default" (click)="getlistpaging()" type="button"><i
+                      class="fas fa-search"></i></button>
+                  <button class="btn btn-default" (click)="reset()" type="button">Reset</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap">
+              <thead>
+                <tr>
+                  <th>Computer Code </th>
+                  <th>Computer Name</th>
+                  <th>Deparment Type Code</th>
+                  <th>Deparment Type Name</th>
+                  <th>StartTime</th>
+                  <th>EndTime</th>
+                  <th>TotalHour</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let computerUsingHistory of computerUsingHistories">
+                  <td>{{computerUsingHistory.ComputerCode}}</td>
+                  <td>{{computerUsingHistory.ComputerName}}</td>
+                  <td>{{computerUsingHistory.DeparmentTypeCode}}</td>
+                  <td>{{computerUsingHistory.DeparmentTypeName}}</td>
+                  <td>{{computerUsingHistory.StartTime | date:'medium' }}</td>
+                  <td>{{computerUsingHistory.EndTime | date:'medium' }}</td>
+                  <td>{{computerUsingHistory.TotalHour }}</td>
+                  <td>
+                    <button class="btn btn-primary"
+                      (click)="showEditModal(computerUsingHistory.ComputerUsingHistoryId)"><i
+                        class="fas fa-pencil-alt"></i></button>
+                    <button class="btn btn-danger" (click)="deleteItem(computerUsingHistory.ComputerUsingHistoryId)"><i
+                        class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer">
+            <pagination [boundaryLinks]="true" [itemsPerPage]="pageSize" (pageChanged)="pageChanged($event)"
+              [totalItems]="totalRow" [(ngModel)]="pageIndex" class="pagination pagination-sm m-0 float-right"
+              previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <div bsModal #addEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
   aria-hidden="true">

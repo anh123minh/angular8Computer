@@ -75,6 +75,9 @@ export class ComputerComponent implements OnInit {
 
   //Reset filter
   public reset() {
+    this.computerTypeId = null;
+    this.deparmentTypeId = null;
+    this.producerTypeId = null;
     this.filter = "";
     this.getlistpaging();
   }

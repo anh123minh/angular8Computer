@@ -1,69 +1,67 @@
-<div class="page-title">
-  <div class="title_left">
-    <h3>Danh sách nhóm quyền</h3>
-  </div>
-
-  <div class="title_right">
-    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-      <div class="input-group">
-        <input type="text" class="form-control" name="filter" (keyup.enter)="getlistpaging()" [(ngModel)]="filter"
-          placeholder="Gõ tên quyền...">
-        <span class="input-group-btn">
-          <button class="btn btn-default" (click)="getlistpaging()" type="button">Tìm!</button>
-          <button class="btn btn-default" (click)="reset()" type="button">Reset</button>
-        </span>
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>DANH SÁCH PHÒNG BAN</h1>
       </div>
     </div>
   </div>
-</div>
-<div class="clearfix"></div>
-<div class="row">
-  <div class="col-md-12 col-sm-12 col-xs-12">
-    <div class="x_panel">
-      <div class="x_title">
-        <ul class="nav navbar-right panel_toolbox">
-          <li>
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
             <button class="btn btn-success" (click)="showAddModal()">Thêm mới</button>
-          </li>
-
-        </ul>
-        <div class="clearfix"></div>
-      </div>
-      <div class="x_content">
-
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Deparment Type Code</th>
-              <th>Deparment Type Name</th>
-              <th>Deparment Type Desrciption</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let deparmentType of deparmentTypes">
-              <td>{{deparmentType.DeparmentTypeCode}}</td>
-              <td>{{deparmentType.DeparmentTypeName}}</td>
-              <td>{{deparmentType.DeparmentTypeDescription}}</td>
-              <td>
-                <button class="btn btn-primary" (click)="showEditModal(deparmentType.DeparmentTypeId)"><i
-                    class="fa fa-pencil-square-o"></i></button>
-                <button class="btn btn-danger" (click)="deleteItem(deparmentType.DeparmentTypeId)"><i
-                    class="fa fa-trash"></i></button>
-
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="col-md-12">
-          <pagination [boundaryLinks]="true" [itemsPerPage]="pageSize" (pageChanged)="pageChanged($event)"
-            [totalItems]="totalRow" [(ngModel)]="pageIndex" class="pagination-sm" previousText="&lsaquo;"
-            nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+            <div class="card-tools">
+              <div class="input-group input-group-sm">
+                <input type="text" class="form-control float-right" name="filter" (keyup.enter)="getlistpaging()"
+                  [(ngModel)]="filter" placeholder="Gõ tên quyền...">
+                <div class="input-group-append">
+                  <button class="btn btn-default" (click)="getlistpaging()" type="button"><i
+                      class="fas fa-search"></i></button>
+                  <button class="btn btn-default" (click)="reset()" type="button">Reset</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap">
+              <thead>
+                <tr>
+                  <th>Deparment Type Code</th>
+                  <th>Deparment Type Name</th>
+                  <th>Deparment Type Desrciption</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let deparmentType of deparmentTypes">
+                  <td>{{deparmentType.DeparmentTypeCode}}</td>
+                  <td>{{deparmentType.DeparmentTypeName}}</td>
+                  <td>{{deparmentType.DeparmentTypeDescription}}</td>
+                  <td>
+                    <button class="btn btn-primary" (click)="showEditModal(deparmentType.DeparmentTypeId)"><i
+                        class="fas fa-pencil-alt"></i></button>
+                    <button class="btn btn-danger" (click)="deleteItem(deparmentType.DeparmentTypeId)"><i
+                        class="fas fa-trash"></i></button>    
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer">
+            <pagination [boundaryLinks]="true" [itemsPerPage]="pageSize" (pageChanged)="pageChanged($event)"
+              [totalItems]="totalRow" [(ngModel)]="pageIndex" class="pagination pagination-sm m-0 float-right"
+              previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <div bsModal #addEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
   aria-hidden="true">

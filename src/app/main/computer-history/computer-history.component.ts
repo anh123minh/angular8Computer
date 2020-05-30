@@ -63,6 +63,7 @@ export class ComputerHistoryComponent implements OnInit {
 
   //Reset filter
   public reset() {
+    this.deparmentTypeId = null;
     this.filter = "";
     this.getlistpaging();
   }

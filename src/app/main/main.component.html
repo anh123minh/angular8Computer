@@ -1,4 +1,4 @@
-<div class="container body">
+<!-- <div class="container body">
   <div class="main_container">
     <div class="col-md-3 left_col">
       <div class="left_col scroll-view">
@@ -8,7 +8,7 @@
 
         <div class="clearfix"></div>
 
-        <!-- menu profile quick info -->
+        </!-- menu profile quick info --/>
         <div class="profile">
           <div class="profile_pic">
             <img [src]="baseFolder + user.avatar" height="50" alt="..." class="img-circle profile_img">
@@ -18,15 +18,15 @@
             <h2>{{user.fullName}}</h2>
           </div>
         </div>
-        <!-- /menu profile quick info -->
+        </!-- /menu profile quick info --/>
 
         <br />
 
-        <!-- sidebar menu -->
+        </!-- sidebar menu --/>
         <app-sidebar-menu></app-sidebar-menu>
-        <!-- /sidebar menu -->
+        </!-- /sidebar menu --/>
 
-        <!-- /menu footer buttons -->
+        </!-- /menu footer buttons --/>
         <div class="sidebar-footer hidden-small">
           <a data-toggle="tooltip" data-placement="top" title="Settings">
             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
@@ -41,29 +41,69 @@
             <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
           </a>
         </div>
-        <!-- /menu footer buttons -->
+        </!-- /menu footer buttons --/>
       </div>
     </div>
 
-    <!-- top navigation -->
+    </!-- top navigation --/>
     <app-top-menu></app-top-menu>
-    <!-- /top navigation -->
+    </!-- /top navigation --/>
 
-    <!-- page content -->
+    </!-- page content --/>
     <div class="right_col" role="main">
       <div class="">
         <router-outlet></router-outlet>
       </div>
     </div>
-    <!-- /page content -->
+    </!-- /page content --/>
 
-    <!-- footer content -->
+    </!-- footer content --/>
     <footer>
       <div class="pull-right">
         Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
       </div>
       <div class="clearfix"></div>
     </footer>
-    <!-- /footer content -->
+    </!-- /footer content --/>
   </div>
+</div> -->
+
+<!-- ==================================== -->
+
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <app-top-menu></app-top-menu>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <app-sidebar-menu></app-sidebar-menu>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <router-outlet></router-outlet>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+    <div class="p-3">
+      <h5>Title</h5>
+      <p>Sidebar content</p>
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+    <div class="float-right d-none d-sm-inline">
+      Anything you want
+    </div>
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+  </footer>
 </div>
+<!-- ./wrapper -->
