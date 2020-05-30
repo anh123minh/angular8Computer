@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NotificationService } from '../core/services/notification.service';
 import { AuthenService } from '../core/services/authen.service';
 import { MessageContstants } from '../core/common/message.constants';
@@ -9,15 +9,16 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   loading = false;
   model: any = {};
   returnUrl: string;
   constructor(private authenService: AuthenService,
     private notificationService: NotificationService,
-    private router: Router) { }
+    private router: Router) { }  
 
   ngOnInit() {
+    document.body.className = "hold-transition login-page";
   }
   login() {
     this.loading = true;
@@ -30,4 +31,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  ngOnDestroy(): void {
+    document.body.className = "hold-transition sidebar-mini";
+  }
 }
