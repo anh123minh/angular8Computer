@@ -24,18 +24,23 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/admin-lte/plugins/fontawesome-free/css/all.min.css",
+              "node_modules/admin-lte/dist/css/adminlte.min.css",
+
               "node_modules/animate.css/animate.css",
               "node_modules/alertifyjs/build/css/alertify.css",
               "node_modules/alertifyjs/build/css/themes/default.css",
-              "src/assets/css/custom.css",
               "src/styles.css"
             ],
-            "scripts": ["node_modules/jquery/dist/jquery.min.js",
+            "scripts": [
+              "node_modules/admin-lte/plugins/jquery/jquery.min.js",
+              "node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js",
+              "node_modules/admin-lte/plugins/bs-custom-file-input/bs-custom-file-input.min.js",
+              "node_modules/admin-lte/plugins/chart.js/Chart.min.js",
+              "node_modules/admin-lte/dist/js/adminlte.min.js",
+
               "node_modules/signalr/jquery.signalr.js",
 
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/fastclick/lib/fastclick.js",
               "node_modules/alertifyjs/build/alertify.js",
 
