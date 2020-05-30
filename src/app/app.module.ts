@@ -21,7 +21,7 @@ import { MainModule } from './main/main.module';
     FormsModule,
     HttpClientModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes, { useHash: true }),
+    RouterModule.forRoot(appRoutes, { useHash: false }),
     PaginationModule.forRoot(),
     ModalModule.forRoot(),
     LoginModule,
