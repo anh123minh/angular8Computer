@@ -6,6 +6,13 @@ import { AnnouncementRouter } from './announcement.routes';
 import { FormsModule } from '@angular/forms';
 import { DataService } from './../../core/services/data.service';
 import { UtilityService } from './../../core/services/utility.service';
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes = [
+  { path: '', redirectTo: 'index', pathMatch: 'full' },
+  { path: 'index', component: AnnouncementComponent}
+];
+
 @NgModule({
   imports: [
     FormsModule,
@@ -13,6 +20,7 @@ import { UtilityService } from './../../core/services/utility.service';
     //PaginationModule.forRoot(),
     AnnouncementRouter,
     //ModalModule.forRoot()
+    RouterModule.forChild(routes),
   ],
   declarations: [AnnouncementComponent],
   providers:[]

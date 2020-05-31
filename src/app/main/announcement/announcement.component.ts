@@ -29,52 +29,5 @@ export class AnnouncementComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.search();
-  }
-  //Load data
-  public search() {
-    this._dataService.get('/api/announcement/getall?pageIndex='
-      + this.pageIndex + '&pageSize='
-      + this.pageSize)
-      .subscribe((response: any) => {
-        this.announcements = response.Items;
-        this.pageIndex = response.PageIndex;
-      }, error => this._dataService.handleError(error));
-  }
-  //Show add form
-  public showAdd() {
-    this.entity = {};
-    this.addEditModal.show();
-  }
-  //Show edit form
-  public showEdit(id: number) {
-    this.entity = this.announcements.find(x => x.ID == id);
-    this.addEditModal.show();
-  }
-  //Action delete
-  public deleteConfirm(id: string): void {
-    this._dataService.delete('/api/announcement/delete', 'id', id).subscribe((response: any) => {
-      this.notificationService.printSuccessMessage(MessageContstants.DELETED_OK_MSG);
-      this.search();
-    }, error => this._dataService.handleError(error));
-  }
-  //Click button delete turn on confirm
-  public delete(id: string) {
-    this.notificationService.printConfirmationDialog(MessageContstants.CONFIRM_DELETE_MSG, () => this.deleteConfirm(id));
-  }
-  //Save change for modal popup
-  public saveChanges(valid: boolean) {
-    if (valid) {
-      this._dataService.post('/api/announcement/add', JSON.stringify(this.entity)).subscribe((response: any) => {
-        this.search();
-        this.addEditModal.hide();
-        this.notificationService.printSuccessMessage(MessageContstants.CREATED_OK_MSG);
-      }, error => this._dataService.handleError(error));
-    }
-
-  }
-  public pageChanged(event: any): void {
-    this.pageIndex = event.page;
-    this.search();
   }
 }
