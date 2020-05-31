@@ -16,6 +16,7 @@ import { ProducerTypeModule } from './producer-type/producer-type.module';
 import { ComputerModule } from './computer/computer.module';
 import { UsingReportModule } from './using-report/using-report.module';
 import { ComputerHistoryModule } from './computer-history/computer-history.module';
+import { SimpleTinyComponent } from '../shared/simple-tiny/simple-tiny.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,7 @@ import { ComputerHistoryModule } from './computer-history/computer-history.modul
     ProducerTypeModule,
     UsingReportModule
   ],
-  declarations: [MainComponent, SidebarMenuComponent, TopMenuComponent],
+  declarations: [MainComponent, SidebarMenuComponent, TopMenuComponent, SimpleTinyComponent],
   providers: [UtilityService, AuthenService, SignalrService]
 })
 export class MainModule { }

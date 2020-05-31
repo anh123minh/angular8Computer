@@ -152,4 +152,9 @@ export class UserComponent implements OnInit {
   public selectedDate(value: any) {
     this.entity.BirthDay = moment(value.end._d).format('DD/MM/YYYY');
   }
+  //Reset filter
+  public reset(){
+    this.filter = "";
+    this.loadData();
+  }
 }
