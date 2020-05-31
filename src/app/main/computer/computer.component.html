@@ -64,6 +64,7 @@
                   <td>{{computer.ProducerTypeName}}</td>
                   <td>{{computer.IsBusyNow == true ? "Busy" : "Free"}}</td>
                   <td>
+                    <button class="btn btn-info" (click)="getInfo(computer.ComputerId)"><i class="fas fa-info-circle"></i></button>
                     <button class="btn btn-primary" (click)="showEditModal(computer.ComputerId)"><i
                         class="fas fa-pencil-alt"></i></button>
                     <button class="btn btn-danger" (click)="deleteItem(computer.ComputerId)"><i

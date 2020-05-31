@@ -6,6 +6,7 @@ import { UtilityService } from '../../core/services/utility.service';
 import { MessageContstants } from '../../core/common/message.constants';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { TreeComponent } from 'angular-tree-component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-computer',
@@ -31,7 +32,8 @@ export class ComputerComponent implements OnInit {
   public producerTypeSelectList: any[];
   constructor(private _dataService: DataService,
     private notificationService: NotificationService,
-    private utilityService: UtilityService) { }
+    private utilityService: UtilityService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getlistpaging();
@@ -137,5 +139,9 @@ export class ComputerComponent implements OnInit {
   pageChanged(event: any): void {
     this.pageIndex = event.page;
     this.getlistpaging();
+  }
+
+  getInfo(id: number){
+    this.utilityService.navigate('/computer/computer/detail/' + id.toString());
   }
 }
