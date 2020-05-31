@@ -1,0 +1,128 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>DETAIL OF COMPUTERS</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card card-info">
+          <div class="card-header">
+            <h3 class="card-title">Detail</h3>           
+          </div>
+          <div class="card-body">
+            <form class="form-horizontal form-label-left input_mask" novalidate #addEditForm="ngForm"
+              (ngSubmit)="saveChanges(addEditForm.valid)" *ngIf="entity">
+
+              <div class="row align-items-baseline">
+                <div class="col-md-6 col-sm-12 mb-2x">
+                  <label class="control-label">ComputerCode</label>
+                  <div class="col-12">
+                    <input type="hidden" [(ngModel)]="entity.ComputerId" name="ComputerId" />
+                    <input type="text" #ComputerCode="ngModel" disabled [(ngModel)]="entity.ComputerCode" required
+                      minlength="3"  name="ComputerCode" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12 mb-2x">
+                  <label class="control-label">ComputerName</label>
+                  <div class="col-12"> 
+                    <input type="text" #ComputerName="ngModel" disabled [(ngModel)]="entity.ComputerName" required
+                      minlength="3" name="ComputerName" class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row align-items-baseline">
+                <div class="col-md-6 col-sm-12 mb-2x">
+                  <label class="control-label">ComputerTypeCode</label>
+                  <div class="col-12">
+                    <input type="hidden" [(ngModel)]="entity.ComputerTypeId" name="ComputerTypeId" />
+                    <input type="text" #ComputerTypeCode="ngModel" disabled [(ngModel)]="entity.ComputerTypeCode" required
+                      minlength="3" name="ComputerTypeCode" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12 mb-2x">
+                  <label class="control-label">ComputerTypeName</label>
+                  <div class="col-12">
+                    <input type="hidden" [(ngModel)]="entity.ComputerTypeId" name="ComputerTypeId" />
+                    <input type="text" #ComputerTypeName="ngModel" disabled [(ngModel)]="entity.ComputerTypeName" required
+                      minlength="3" name="ComputerTypeName" class="form-control">
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row align-items-baseline">
+                <div class="col-md-6 col-sm-12 mb-2x">
+                  <label class="control-label">DeparmentTypeCode</label>
+                  <div class="col-12">
+                    <input type="hidden" [(ngModel)]="entity.DeparmentTypeId" name="DeparmentTypeId" />
+                    <input type="text" #DeparmentTypeCode="ngModel" disabled [(ngModel)]="entity.DeparmentTypeCode" required
+                      minlength="3" name="DeparmentTypeCode" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12 mb-2x">
+                  <label class="control-label">DeparmentTypeName</label>
+                  <div class="col-12">
+                    <input type="hidden" [(ngModel)]="entity.DeparmentTypeId" name="DeparmentTypeId" />
+                    <input type="text" #DeparmentTypeName="ngModel" disabled [(ngModel)]="entity.DeparmentTypeName" required
+                      minlength="3" name="DeparmentTypeName" class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row align-items-baseline">
+                <div class="col-md-6 col-sm-12 mb-2x">
+                  <label class="control-label">ProducerTypeCode</label>
+                  <div class="col-12">
+                    <input type="hidden" [(ngModel)]="entity.ProducerTypeId" name="ProducerTypeId" />
+                    <input type="text" #ProducerTypeCode="ngModel" disabled [(ngModel)]="entity.ProducerTypeCode" required
+                      minlength="3" name="ProducerTypeCode" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12 mb-2x">
+                  <label class="control-label">ProducerTypeName</label>
+                  <div class="col-12">
+                    <input type="hidden" [(ngModel)]="entity.ProducerTypeId" name="ProducerTypeId" />
+                    <input type="text" #ProducerTypeName="ngModel" disabled [(ngModel)]="entity.ProducerTypeName" required
+                      minlength="3" name="ProducerTypeName" class="form-control">
+                  </div>
+                </div>
+              </div>
+
+                            <div class="row align-items-baseline">
+                <div class="col-md-6 col-sm-12 mb-2x">
+                  <label class="control-label">ComputerDescription</label>
+                  <div class="col-12">
+                    <input type="text" #ComputerDescription="ngModel" disabled [(ngModel)]="entity.ComputerDescription" required
+                      minlength="3" name="ComputerDescription" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12 mb-2x">
+                  <label class="control-label">IsBusyNow</label>
+                  <div class="col-12">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" disabled [(ngModel)]="entity.IsBusyNow" name="IsBusyNow" #IsBusyNow="ngModel"> Busy
+                      </label>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+
+          </form>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-info" (click)="goBack()">GO BACK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
