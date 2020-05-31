@@ -9,6 +9,8 @@ import { UtilityService } from './../../core/services/utility.service';
 //import { ComputerHistoryRouter } from './computer-history.routes';
 import { ComputerHistoryComponent } from './computer-history.component';
 import { Routes, RouterModule } from '@angular/router';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
+
 const routes: Routes = [
     { path: '', redirectTo: 'index', pathMatch: 'full' },
     { path: 'index', component: ComputerHistoryComponent }
@@ -22,7 +24,8 @@ const routes: Routes = [
     ModalModule,
     FormsModule,
     PaginationModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    DateInputsModule,
   ],
   declarations: [ComputerHistoryComponent],
   providers: [DataService, UtilityService]

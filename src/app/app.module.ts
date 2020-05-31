@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { LoginModule } from './login/login.module';
 import { MainModule } from './main/main.module';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { MainModule } from './main/main.module';
     PaginationModule.forRoot(),
     ModalModule.forRoot(),
     LoginModule,
-    MainModule
+    MainModule,
+    DateInputsModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

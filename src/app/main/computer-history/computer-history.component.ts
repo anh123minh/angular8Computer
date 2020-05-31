@@ -6,6 +6,7 @@ import { UtilityService } from '../../core/services/utility.service';
 import { MessageContstants } from '../../core/common/message.constants';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { TreeComponent } from 'angular-tree-component';
+import { SystemConstants } from '../../core/common/system.constants';
 
 @Component({
   selector: 'app-computer-history',
@@ -25,14 +26,19 @@ export class ComputerHistoryComponent implements OnInit {
   public entity: any;
   public computerUsingHistories: any[];
   public deparmentTypeSelectList: any[];
-  public computers: any[];
+  public appUserSelectList: any[];
+  public computerSelectList: any[];
+   
+  public reservationDataStartTime: { StarTime?: Date };
+  public reservationDataEndTime: { EndTime?: Date };
+
   constructor(private _dataService: DataService,
     private notificationService: NotificationService,
     private utilityService: UtilityService) { }
 
   ngOnInit() {
     this.getlistpaging();
-    this.getDeparmenTypeSelectList();
+    this.getDeparmenTypeSelectList();  
   }
 
   //Load data
@@ -50,7 +56,7 @@ export class ComputerHistoryComponent implements OnInit {
   //Get Select List Computer
   public getComputerSelectList() {
     this._dataService.get('/api/computer/selectlist').subscribe((respone: any) => {
-      this.computers = respone;
+      this.computerSelectList = respone;
     });
   }
 
@@ -58,6 +64,13 @@ export class ComputerHistoryComponent implements OnInit {
   public getDeparmenTypeSelectList() {
     this._dataService.get('/api/deparmentType/selectlist').subscribe((respone: any) => {
       this.deparmentTypeSelectList = respone;
+    });
+  }
+
+  //Get Select List User
+  public getAppUserSelectList() {
+    this._dataService.get('/api/appUser/selectlist').subscribe((respone: any) => {
+      this.appUserSelectList = respone;
     });
   }
 
@@ -70,18 +83,46 @@ export class ComputerHistoryComponent implements OnInit {
 
   //Show add form
   public showAddModal() {
+    this.getComputerSelectList();
+    this.getAppUserSelectList();
     this.entity = {};
+    var today = new Date(Date.now());
+    this.reservationDataStartTime = { StarTime: today};
+    this.reservationDataEndTime = { EndTime: today};
     this.addEditModal.show();
   }
 
   //Show edit form
   public showEditModal(id: string) {
+    this.getComputerSelectList();
     this._dataService.get('/api/computerUsingHistory/detail/' + id)
       .subscribe((response: any) => {
         this.entity = response;
+        var objStartTime = {StarTime: this.entity.StartTime};
+        var objEndTime = { EndTime: this.entity.EndTime};
+        var tempStartTime = JSON.parse(JSON.stringify(objStartTime));
+        var tempEndTime = JSON.parse(JSON.stringify(objEndTime));
+        this.reservationDataStartTime = this.parseObjectDates(tempStartTime);
+        this.reservationDataEndTime = this.parseObjectDates(tempEndTime);
         this.addEditModal.show();
       }, error => this._dataService.handleError(error));
   }
+
+  public parseObjectDates(target: any): any {
+    const result = Object.assign({}, target);
+
+    Object.keys(result)
+        .forEach(key => {
+            const date = new Date(result[key]);
+            if (!isNaN(date.getTime())) {
+                result[key] = date;
+            }
+            console.log(date);
+        });
+
+        console.log(result);
+    return result;
+}
 
   //Action delete
   public deleteConfirm(id: string): void {
@@ -100,7 +141,10 @@ export class ComputerHistoryComponent implements OnInit {
   //Save change for modal popup
   public saveChanges(valid: boolean) {
     if (valid) {
-      if (this.entity.ComputerId == undefined) {
+      if (this.entity.ComputerUsingHistoryId == undefined) {
+        this.entity.StartTime = this.reservationDataStartTime.StarTime;
+        this.entity.EndTime = this.reservationDataEndTime.EndTime;
+        console.log(localStorage.getItem(SystemConstants.CURRENT_USER));
         this._dataService.post('/api/computerUsingHistory/add', JSON.stringify(this.entity))
           .subscribe((response: any) => {
             this.getlistpaging();
@@ -109,6 +153,8 @@ export class ComputerHistoryComponent implements OnInit {
           }, error => this._dataService.handleError(error));
       }
       else {
+        this.entity.StartTime = this.reservationDataStartTime.StarTime;
+        this.entity.EndTime = this.reservationDataEndTime.EndTime;
         this._dataService.put('/api/computerUsingHistory/update', JSON.stringify(this.entity))
           .subscribe((response: any) => {
             this.getlistpaging();
