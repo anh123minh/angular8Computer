@@ -14,9 +14,11 @@ export const mainRoutes: Routes = [
 
             { path: 'role', loadChildren: './role/role.module#RoleModule' },
 
-            { path: 'function', loadChildren: './function/function.module#FunctionModule' },
+            { path: 'error', loadChildren: './error/error.module#ErrorModule' },
 
-            { path: 'order', loadChildren: './order/order.module#OrderModule' },
+            { path: 'setting', loadChildren: './setting/setting.module#SettingModule' },
+
+            { path: 'function', loadChildren: './function/function.module#FunctionModule' },
 
             { path: 'announcement', loadChildren: './announcement/announcement.module#AnnouncementModule' },
 
