@@ -9,9 +9,11 @@ import { UtilityService } from './../../core/services/utility.service';
 //import { ComputerRouter } from './computer.routes';
 import { ComputerComponent } from './computer.component';
 import { Routes, RouterModule } from '@angular/router';
+import { ComputerDetailComponent } from './computer-detail/computer-detail.component';
 const routes: Routes = [
     { path: '', redirectTo: 'index', pathMatch: 'full' },
-    { path: 'index', component: ComputerComponent }
+    { path: 'index', component: ComputerComponent },
+    { path: 'detail/:id', component: ComputerDetailComponent }
 ];
 
 @NgModule({
@@ -24,7 +26,7 @@ const routes: Routes = [
     PaginationModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ComputerComponent],
+  declarations: [ComputerComponent, ComputerDetailComponent],
   providers: [DataService, UtilityService]
 })
 export class ComputerModule { }
