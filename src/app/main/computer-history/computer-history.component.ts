@@ -95,6 +95,7 @@ export class ComputerHistoryComponent implements OnInit {
   //Show edit form
   public showEditModal(id: string) {
     this.getComputerSelectList();
+    this.getAppUserSelectList();
     this._dataService.get('/api/computerUsingHistory/detail/' + id)
       .subscribe((response: any) => {
         this.entity = response;
