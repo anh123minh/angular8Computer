@@ -39,7 +39,7 @@
                 <tr>
                   <th>Computer Code </th>
                   <th>Computer Name</th>
-                  <th>Deparment Type Code</th>
+                  <th>UserName</th>
                   <th>Deparment Type Name</th>
                   <th>StartTime</th>
                   <th>EndTime</th>
@@ -51,7 +51,7 @@
                 <tr *ngFor="let computerUsingHistory of computerUsingHistories">
                   <td>{{computerUsingHistory.ComputerCode}}</td>
                   <td>{{computerUsingHistory.ComputerName}}</td>
-                  <td>{{computerUsingHistory.DeparmentTypeCode}}</td>
+                  <td>{{computerUsingHistory.UserName}}</td>
                   <td>{{computerUsingHistory.DeparmentTypeName}}</td>
                   <td>{{computerUsingHistory.StartTime | date:'medium' }}</td>
                   <td>{{computerUsingHistory.EndTime | date:'medium' }}</td>
